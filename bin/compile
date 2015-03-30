@@ -19,10 +19,11 @@ if [ -f "$BUILD_DIR/.qt_runtime" ]; then
   QT_VERSION=$(cat $BUILD_DIR/.qt_runtime)
 fi
 
+STACK=${STACK:-cedar-14}
 QT_VERSION=${QT_VERSION:-5.4.1}
 QT_MAJOR_VERSION=$(echo $QT_VERSION | cut -d \. -f 1,2)
 QT_BUILD_DIR="$BUILD_DIR/.qtcs/Qt"
-QT_URL="https://s3-eu-west-1.amazonaws.com/qtc-runtime-buildpacks/binaries/lucid/qt-$QT_VERSION-linux-x64.tar.gz"
+QT_URL="https://s3-eu-west-1.amazonaws.com/qtc-runtime-buildpacks/binaries/$STACK/qt-$QT_VERSION-linux-x64.tar.gz"
 
 mkdir -p $QT_BUILD_DIR
 mkdir -p "$CACHE_DIR/.qtcs"
